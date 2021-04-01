@@ -1,3 +1,4 @@
+
 const image = document.querySelector('img');
 const title = document.getElementById('title');
 const artist = document.getElementById('artist');
@@ -12,47 +13,39 @@ const durationEl = document.getElementById('duration');
 const prevBtn = document.getElementById('prev');
 const playBtn = document.getElementById('play');
 const nextBtn = document.getElementById('next');
-const body = document.querySelector('html');
-
-body.addEventListener('keypress', (e) => {
-    e.preventDefault()
-    console.log(e)
-
-    if (e.code === "Space"){
-console.log('si es espacio')
-playBtn.click();
-    } else{
-        console.log('no es espacio')
-    }
-});
+const html = document.querySelector('html');
 
 // music 
  
 const songs = [
-  {
-      name: 'G4-1',
-      displayName: 'Local Scammer',
-      artist: 'G4 Boyz',
-  },
+    {
+        name: 'G4-1',
+        displayName: 'Local Scammer',
+        artist: 'G4 Boyz',
+        src: "G4-1.jpg"
+    },
 
-   {
-    name: 'Pobre',
-    displayName: 'Pobre',
-    artist: 'Joe Love',
-  },
+    {
+        name: 'Pobre',
+        displayName: 'Pobre',
+        artist: 'Joe Love',
+        src: "Pobre.jpg"
+    },
 
-  {
-    name: 'Instagram',
-    displayName: 'Instagram',
-    artist: 'Joe Love',
-},
+    {
+        name: 'Instagram',
+        displayName: 'Instagram',
+        artist: 'Joe Love',
+        src: "Instagram.jpg"
 
-{
-    name: 'Monigote',
-    displayName: 'Monigote',
-    artist: 'Almighty',
-}
+    },
 
+    {
+        name: 'Monigote',
+        displayName: 'Mingote',
+        artist: 'Almighty',
+        src: "Monigote.jpg"
+    }
 ];
 
 
@@ -62,6 +55,7 @@ let isPlaying = false;
 
 /* Play */
 function playSong() {
+    playBtn.addEventListener
     isPlaying = true;
     playBtn.classList.replace('fa-play','fa-pause');
     playBtn.setAttribute('title','Pause');
@@ -79,7 +73,12 @@ function pauseSong(){
 
 /* play or pause event  listener  */
 
-playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
+playBtn.addEventListener('click', (e) => {
+    // e.preventDefault();
+    // console.log(e)
+
+    (isPlaying ? pauseSong() : playSong())
+});
 
 
 //update dom state
@@ -88,9 +87,10 @@ function loadSong(song) {
     title.textContent = song.displayName;
     artist.textContent = song.artist;
     music.src = `music/${song.name}.mp3`;
-    image.src = `img/${song.name}.jpg`;
+    image.src = `img/${song.src}`;
 
 }
+
 
 //current song
 let songIndex = 0;
@@ -118,6 +118,7 @@ function nextSong() {
 
 // on load - select first song 
 loadSong(songs[songIndex]);
+// console.log(songs[songIndex]);
 
 
 //Update Progress Bar en Time
@@ -168,3 +169,7 @@ nextBtn.addEventListener('click', nextSong);
 music.addEventListener('ended', nextSong);
 music.addEventListener('timeupdate', updateProgressBar);
 progressContainer.addEventListener('click', setProgressBar);
+document.addEventListener('keyup', (e) => ( e.code == "Space") ? playBtn.click(): false);
+document.addEventListener('keyup', (e) => ( e.code == "ArrowLeft") ? prevBtn.click(): false);
+document.addEventListener('keyup', (e) => ( e.code == "ArrowRight") ? nextBtn.click(): false);
+

@@ -42,9 +42,9 @@ const songs = [
 
     {
         name: 'Monigote',
-        displayName: 'Mingote',
+        displayName: 'Monigote',
         artist: 'Almighty',
-        src: "Monigote.jpg"
+        src: "monigote.jpg"
     }
 ];
 

@@ -48,7 +48,6 @@ const songs = [
     }
 ];
 
-
 // chech if playing 
 let isPlaying = false;
 

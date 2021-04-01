@@ -14,10 +14,6 @@ const playBtn = document.getElementById('play');
 const nextBtn = document.getElementById('next');
 const html = document.querySelector('html');
 
-document.addEventListener('keyup', (e) => ( e.code == "Space") ? playBtn.click(): false);
-document.addEventListener('keyup', (e) => ( e.code == "ArrowLeft") ? prevBtn.click(): false);
-document.addEventListener('keyup', (e) => ( e.code == "ArrowRight") ? nextBtn.click(): false);
-
 // music 
  
 const songs = [
@@ -173,3 +169,6 @@ nextBtn.addEventListener('click', nextSong);
 music.addEventListener('ended', nextSong);
 music.addEventListener('timeupdate', updateProgressBar);
 progressContainer.addEventListener('click', setProgressBar);
+document.addEventListener('keyup', (e) => ( e.code == "Space") ? playBtn.click(): false);
+document.addEventListener('keyup', (e) => ( e.code == "ArrowLeft") ? prevBtn.click(): false);
+document.addEventListener('keyup', (e) => ( e.code == "ArrowRight") ? nextBtn.click(): false);
